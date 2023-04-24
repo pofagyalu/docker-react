@@ -5,4 +5,13 @@ before_install:
   - docker build -t pofagyalu/docker-react -f Dockerfile.dev .
 
 script: 
-  - docker run pofagyalu/docker-react yarn test -- --coverage
+  - docker run pofagyalu/docker-react npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker-react"
+  env: "Dockerreact-env"
+  bucket_name: 
+
+  http://dockerreact-env.eba-3u7s3zyt.us-east-1.elasticbeanstalk.com/
